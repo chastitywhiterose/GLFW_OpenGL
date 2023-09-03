@@ -1,0 +1,27 @@
+Compiling things on Windows is always a bit more complicated than on Linux. This file documents how I integrated GLFW into my existing w64devkit building system which I already use with SDL.
+
+
+From https://www.glfw.org/ I downloaded the following file:
+
+glfw-3.3.8.bin.WIN64.zip
+
+Inside are multiple versions of the same files for different compilers. I extracted the archive to a convenient place and then wrote the following batch script to make it work exactly as I needed it to by pointing it to the include and lib-mingw-w64 folders because they are what I need since I am using mingw instead of Visual C++.
+---
+SET DEVKIT=C:\w64devkit
+SET COMPILER_PATH=%DEVKIT%\bin
+SET PATH=%COMPILER_PATH%
+SET INCLUDE=C:\GLFW\glfw-3.3.8.bin.WIN64\include
+SET LIBRARY=C:\GLFW\glfw-3.3.8.bin.WIN64\lib-mingw-w64
+
+gcc -Wall -ansi -pedantic main.c -o main -I%INCLUDE% -L%LIBRARY% -lglfw3 -lOpenGL32 -lgdi32 && main
+---
+I wrote it that way above so that I could correctly test the structure of the files before installing them to a more permanent location. After I copied the files to the "include" and "lib" folders inside "C:\w64devkit", I was able to shorten the script to the following
+---
+SET DEVKIT=C:\w64devkit
+SET COMPILER_PATH=%DEVKIT%\bin
+SET PATH=%COMPILER_PATH%
+
+gcc -Wall -ansi -pedantic main.c -o main -I%DEVKIT%\include -L%DEVKIT%\lib -lglfw3 -lOpenGL32 -lgdi32 && main
+strip main.exe
+---
+As I expected, the size of statically linked programs linked with GLFW are far smaller than when linked with SDL2. They average around 300kb instead of 2.4 megabytes because GLFW is a much smaller library which only includes what is needed to open a Window for OpenGL drawing and managing user input. This theoretically would probably mean that it runs faster too if the OpenGL code is written well.
