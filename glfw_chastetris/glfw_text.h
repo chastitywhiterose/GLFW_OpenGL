@@ -66,3 +66,71 @@ void welcome_screen_chaste_font()
 
 
 
+
+
+/*
+function to draw stats of the game
+*/
+
+ void draw_stats()
+ {
+  int scale=8;
+  int char_size=main_lgbt.width/95;
+  int text_x=width/320;
+
+  scale=width*1/140;
+
+  /*printf("Scale %d\n",scale);*/
+
+  lgbt_draw_text("Chaste\n Tris",text_x,32,scale);
+ 
+  scale=width/360;
+
+  sprintf(text,"Score %d",score);
+  lgbt_draw_text(text,text_x,char_size*8*scale,scale);
+
+  sprintf(text,"Lines %d",lines_cleared_total);
+  lgbt_draw_text(text,text_x,char_size*9*scale,scale);
+
+  sprintf(text,"This %c",main_block.id);
+  lgbt_draw_text(text,text_x,char_size*10*scale,scale);
+
+  sprintf(text,"Hold %c",hold_block.id);
+  lgbt_draw_text(text,text_x,char_size*11*scale,scale);
+
+  sprintf(text,"Move %d",moves);
+  lgbt_draw_text(text,text_x,char_size*12*scale,scale);
+
+  sprintf(text,"B2B %d",back_to_back);
+  lgbt_draw_text(text,text_x,char_size*13*scale,scale);
+
+  sprintf(text,"Combo %d",combo);
+  lgbt_draw_text(text,text_x,char_size*14*scale,scale);
+
+  
+  time(&time1);
+  
+  seconds=time1-time0; /*subtract current time from start time to get seconds since game started*/
+  
+/* 
+  if(seconds!=0)
+  {
+   fps_current=frame/seconds;
+   sprintf(text,"FPS %d",fps_current);
+   chaste_font_draw_string(text,text_x,main_font.char_height*16);
+  }
+*/
+  
+  minutes=seconds/60;
+  seconds%=60;
+  hours=minutes/60;
+  minutes%=60;
+  
+  sprintf(text,"Time %d:%02d:%02d",hours,minutes,seconds);
+  lgbt_draw_text(text,text_x,char_size*16*scale,scale);
+
+  /*sprintf(text,"Frame %d",frame);
+  chaste_font_draw_string_scaled(text,text_x,main_font.char_height*17*scale,scale);*/
+
+ }
+

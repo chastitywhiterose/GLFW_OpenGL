@@ -5,16 +5,6 @@ this is the file containing the gameloop function
 */
 
 
-/*
-An SDL_Rect structure because a lot of this code was copied from the SDL version of Chaste Tris
-*/
-typedef struct SDL_Rect
-{
-    int x, y;
-    int w, h;
-} SDL_Rect;
-
-SDL_Rect rect;
 
 
 /*more global variables to be defined before game loop function*/
@@ -54,6 +44,9 @@ void gl_chastetris()
  }
 
  delay=1.0/fps;
+
+ /*get time before the game starts using standard library time function*/
+ time(&time0);
  
  loop=1;
   /* Loop until the user closes the window */
@@ -132,6 +125,7 @@ void gl_chastetris()
   y+=1;
  }
 
+
  /*draw the boundary walls*/
 
 /*
@@ -153,6 +147,8 @@ void gl_chastetris()
  glRecti(rect.x,rect.y,rect.x+rect.w,rect.y+rect.h);
 
  /*end of drawing code for grid*/
+
+ draw_stats();
 
  /*check for keypresses or other events*/
  glfwPollEvents();

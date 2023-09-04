@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 #include <GLFW/glfw3.h>
 
 /*size of window*/
@@ -13,6 +14,8 @@ int loop=1;
 int fullscreen=0;
 
 int frame=0;
+
+time_t time0,time1;
 
 char text[0x200];
 char movetext[256],move_id;
@@ -34,11 +37,12 @@ int text_switch=1;
 
 /*header for different operating modes*/
 #include "chastetris.h"
+#include "glfw_lgbt.h"
+#include "glfw_text.h"
 #include "glfw_graphics.h"
 #include "glfw_input.h"
 
-#include "glfw_lgbt.h"
-#include "glfw_text.h"
+
 
 void error_callback(int error,const char *description)
 {

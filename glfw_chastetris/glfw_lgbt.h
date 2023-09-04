@@ -107,6 +107,17 @@ struct lgbt lgbt_load(const char *filename)
 
 
 
+/*
+An SDL_Rect structure because a lot of this code was copied from the SDL version of Chaste Tris.
+SDL is not required but I have the rectangle structure and this ports it easily.
+*/
+typedef struct SDL_Rect
+{
+    int x, y;
+    int w, h;
+} SDL_Rect;
+
+SDL_Rect rect;
 
 
 

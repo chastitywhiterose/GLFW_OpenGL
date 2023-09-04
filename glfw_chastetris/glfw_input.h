@@ -16,7 +16,9 @@ void key_callback(GLFWwindow* window,int key,int scancode,int action,int mods)
   {
    /* Exit on escape key press */
    case GLFW_KEY_ESCAPE:
-    /*glfwSetWindowShouldClose(window,GLFW_TRUE);*/
+    loop=0;
+   break;
+   case GLFW_KEY_ENTER:
     loop=0;
    break;
 
