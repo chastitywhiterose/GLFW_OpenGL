@@ -1,0 +1,1 @@
+I created my own image format that only I understand currently. However it takes a lot less effort to read it than standard image formats. The user of this game is not required to understand it at all and just trust that it works and look at the code to figure it out if they really want to.
