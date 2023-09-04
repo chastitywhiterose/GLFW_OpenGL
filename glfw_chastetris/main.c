@@ -38,7 +38,7 @@ int text_switch=1;
 #include "glfw_input.h"
 
 #include "glfw_lgbt.h"
-
+#include "glfw_text.h"
 
 void error_callback(int error,const char *description)
 {
@@ -87,6 +87,8 @@ int main(int argc, char **argv)
  main_lgbt=lgbt_load("./font/FreeBASIC Font 8.lgbt");
  
  /*now that context,fonts,and colors are loaded, can start a program!*/
+
+ welcome_screen_chaste_font();
  
  gl_chastetris();
 

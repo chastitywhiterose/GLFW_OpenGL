@@ -28,6 +28,7 @@ void gl_chastetris()
 {
  int pixel,r,g,b;
  int x=0,y=0;
+ double delay;
 
  /*setup the grid display*/
  block_size=height/grid_height;
@@ -52,13 +53,14 @@ void gl_chastetris()
   y+=1;
  }
 
+ delay=1.0/fps;
  
  loop=1;
   /* Loop until the user closes the window */
- while(loop)
+ while(loop && !glfwWindowShouldClose(window))
  {
   glfwseconds=glfwGetTime();
-  glfwseconds1=glfwseconds+1.0/fps;
+  glfwseconds1=glfwseconds+delay;
 
   /*SDL_SetRenderDrawColor(renderer,0,0,0,255);
   SDL_RenderClear(renderer);*/
