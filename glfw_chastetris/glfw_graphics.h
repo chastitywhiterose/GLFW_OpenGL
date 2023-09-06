@@ -150,6 +150,9 @@ void gl_chastetris()
 
  draw_stats();
 
+ /*optionally, get input from another file instead of keyboard if I have this enabled.*/
+ next_file_input();
+
  /*check for keypresses or other events*/
  glfwPollEvents();
 
