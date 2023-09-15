@@ -1,0 +1,34 @@
+This file documents the most important Legacy OpenGL functions I use. There are only a few functions that are used in the OpenGL version of Chaste Tris. If I master OpenGL more, I could port other games to it as well, although this is mostly just a learning exercise because SDL already meets all my needs.
+
+These functions are all part of version 2.1 of OpenGL. Some have been around since 1.0 .
+
+glOrtho( GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble near_val, GLdouble far_val );
+
+This function sets up an orthographic matrix by which all coordinates are transformed. This basically means that it can be used to set up the screen/window for 2 dimensional drawing. For example, this is what I use in my programs.
+
+glOrtho(0,width,height,0,-1,1);
+
+It makes the coordinate system work the same way in OpenGL as it does in SDL. This means that x=0 is the left of the window and y=0 is the top, width is the right, and height is the bottom. This is especially important because OpenGL does not use integer coordinates at all and specifies everything as a float ranging from -1 to 1 for the X,Y, and Z dimensions. Without the glOrtho function, nothing in my programs work because they are based on the coordinate system used by SDL, Allegro, Raylib, etc. Literally only OpenGL uses this float system because it makes sense for 3D applications but not for my 2D implementations.
+
+https://registry.khronos.org/OpenGL-Refpages/gl2.1/xhtml/glOrtho.xml
+https://docs.gl/gl2/glOrtho
+
+
+---
+
+glRecti( GLint x1, GLint y1, GLint x2, GLint y2 );
+
+As the documentation states, this function draws a rectangle using two points as opposite corners.
+It is equivalent to the following series of commands.
+
+ glBegin(GL_POLYGON);
+ glVertex2i(x1, y1);
+ glVertex2i(x2, y1);
+ glVertex2i(x2, y2);
+ glVertex2i(x1, y2);
+ glEnd();
+
+https://registry.khronos.org/OpenGL-Refpages/gl2.1/xhtml/glRect.xml
+https://docs.gl/gl2/glRect
+
+
