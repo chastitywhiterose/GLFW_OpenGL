@@ -23,7 +23,6 @@ void clRecti( GLint x1, GLint y1, GLint x2, GLint y2 )
  glEnd();
 }
 
-
 /*draw rectangle by calling clRecti with identical arguments*/
 
 void clRecti_1( GLint x1, GLint y1, GLint x2, GLint y2 )
