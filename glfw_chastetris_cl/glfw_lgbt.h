@@ -183,7 +183,7 @@ void lgbt_draw_text(const char *s,int cx,int cy,int scale)
       b=(pixel&0x0000FF);
       
       glColor3ub(r,g,b);
-      glRecti(rect_dest.x,rect_dest.y,rect_dest.x+rect_dest.w,rect_dest.y+rect_dest.h);
+      clRectf(rect_dest.x,rect_dest.y,rect_dest.x+rect_dest.w,rect_dest.y+rect_dest.h);
       
      }
      

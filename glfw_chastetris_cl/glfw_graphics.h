@@ -107,18 +107,16 @@ void gl_chastetris()
    g=(pixel&0x00FF00)>>8;
    b=(pixel&0x0000FF);
 
- glColor3ub(r,g,b);
+   glColor3ub(r,g,b);
 
 
- /*set up the rectangle structure with the needed data to square the squares*/
- rect.x=grid_offset_x+x*block_size;
- rect.y=y*block_size;
- rect.w=block_size;
- rect.h=block_size;
+   /*set up the rectangle structure with the needed data to square the squares*/
+   rect.x=grid_offset_x+x*block_size;
+   rect.y=y*block_size;
+   rect.w=block_size;
+   rect.h=block_size;
 
-
-
-   clRecti(rect.x,rect.y,rect.x+rect.w,rect.y+rect.h);
+   clRectf(rect.x,rect.y,rect.x+rect.w,rect.y+rect.h);
 
    x+=1;
   }
@@ -139,12 +137,11 @@ void gl_chastetris()
  rect.w=border_size;
  rect.h=height;
 
- glRecti(rect.x,rect.y,rect.x+rect.w,rect.y+rect.h);
+ clRectf(rect.x,rect.y,rect.x+rect.w,rect.y+rect.h);
 
  rect.x=grid_offset_x+grid_width*block_size;
 
-
- glRecti(rect.x,rect.y,rect.x+rect.w,rect.y+rect.h);
+ clRectf(rect.x,rect.y,rect.x+rect.w,rect.y+rect.h);
 
  /*end of drawing code for grid*/
 
@@ -166,7 +163,6 @@ void gl_chastetris()
  }
 
  frame++;
-
 
  }
 
