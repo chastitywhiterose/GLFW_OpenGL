@@ -17,6 +17,9 @@
 #include <GLFW/glfw3.h> /* GLFW helper library */
 #include <stdio.h>
 
+/*size of window*/
+int width=1280,height=720;
+
 int main() {
   GLFWwindow* window = NULL;
   const GLubyte* renderer;
@@ -32,18 +35,22 @@ int main() {
   the vertex shader positions each vertex point */
   const char* vertex_shader =
     "#version 410\n"
-    "in vec3 vp;"
+"layout(location = 0) in vec3 vertex_position;"
+"layout(location = 1) in vec3 vertex_colour;"
+"out vec3 colour;"
     "void main () {"
-    "  gl_Position = vec4(vp, 1.0);"
+	"colour = vertex_colour;"
+	"gl_Position = vec4(vertex_position, 1.0);"
     "}";
 
   /* the fragment shader colours each fragment (pixel-sized area of the
   triangle) */
   const char* fragment_shader =
     "#version 410\n"
-    "out vec4 frag_colour;"
+"in vec3 colour;"
+"out vec4 frag_colour;"
     "void main () {"
-    "  frag_colour = vec4(0.5, 0.0, 0.5, 1.0);"
+	"frag_colour = vec4 (colour, 1.0);"
     "}";
 
   /* GL shader objects for vertex and fragment shader [components] */
@@ -63,7 +70,7 @@ int main() {
   glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
   glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
 
-  window = glfwCreateWindow( 640, 480, "Hello Triangle", NULL, NULL );
+  window = glfwCreateWindow( width, height, "Chastity Triangle", NULL, NULL );
   if ( !window ) {
     fprintf( stderr, "ERROR: could not open window with GLFW3\n" );
     glfwTerminate();
@@ -150,6 +157,7 @@ int main() {
       that we have a 'currently displayed' surface, and 'currently being drawn'
       surface. hence the 'swap' idea. in a single-buffering system we would see
       stuff being drawn one-after-the-other */
+
   while ( !glfwWindowShouldClose( window ) ) {
     /* wipe the drawing surface clear */
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -168,3 +176,4 @@ int main() {
   glfwTerminate();
   return 0;
 }
+
