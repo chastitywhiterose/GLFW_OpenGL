@@ -1,0 +1,1 @@
+This folder contains some files which I use to conveniently create shapes like rectangles and checkerboards. It has been translated over from legacy opengl. It is meant to mimic the way that legacy opengl works so it doesn't have good performance but it does work.
