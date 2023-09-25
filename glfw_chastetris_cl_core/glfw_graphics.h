@@ -107,7 +107,7 @@ void gl_chastetris()
    g=(pixel&0x00FF00)>>8;
    b=(pixel&0x0000FF);
 
-   glColor3ub(r,g,b);
+   clColor3ub(r,g,b);
 
 
    /*set up the rectangle structure with the needed data to square the squares*/
@@ -130,7 +130,7 @@ void gl_chastetris()
  set up the rectangle structure with the needed data to square the walls
 */
 
- glColor3ub(128,128,128);
+ clColor3ub(128,128,128);
 
  rect.x=grid_offset_x-border_size;
  rect.y=0*block_size;
