@@ -32,6 +32,17 @@ int vertex_index=0;
 int color_index=0;
 float v_red=1.0,v_green=1.0,v_blue=1.0;
 
+void clColor3ub(unsigned char red,unsigned char green,unsigned char blue)
+{
+
+ v_red=255.0/red;
+ v_green=255.0/green;
+ v_blue=255.0/blue;
+
+printf("R%d G%d B%d\n",red,green,blue);
+
+}
+
 
 void clVertex2f(float x,float y)
 {
@@ -68,5 +79,7 @@ void clRectf( float x1, float y1, float x2, float y2 )
   glBufferData( GL_ARRAY_BUFFER, 18 * sizeof( GLfloat ), colours, GL_STATIC_DRAW );
   glDrawArrays( GL_TRIANGLES, 0, 6 );
 }
+
+
 
 
