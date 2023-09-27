@@ -35,11 +35,11 @@ float v_red=1.0,v_green=1.0,v_blue=1.0;
 void clColor3ub(unsigned char red,unsigned char green,unsigned char blue)
 {
 
- v_red=255.0/red;
- v_green=255.0/green;
- v_blue=255.0/blue;
+ v_red=red/255.0;
+ v_green=green/255.0;
+ v_blue=blue/255.0;
 
-printf("R%d G%d B%d\n",red,green,blue);
+/*printf("R%d G%d B%d\n",red,green,blue);*/
 
 }
 
