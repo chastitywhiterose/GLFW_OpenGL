@@ -13,7 +13,6 @@ It also means I can then port this function over to other graphics library to ma
 However, I am limited to 2D graphics because that is all I care about.
 */
 
-
 float clx(float f)
 {
  f=f*2/width-1; /*printf("X=%f\n",f);*/
@@ -46,7 +45,7 @@ void clColor3ub(unsigned char red,unsigned char green,unsigned char blue)
 
 void clVertex2f(float x,float y)
 {
- //glVertex2f( clx(x) , cly(y) );
+ /*glVertex2f( clx(x) , cly(y) );*/
 
  points[vertex_index]=clx(x); vertex_index++;
  points[vertex_index]=cly(y); vertex_index++;
@@ -73,11 +72,11 @@ void clRectf( float x1, float y1, float x2, float y2 )
  clVertex2f(x2, y1);
  clVertex2f(x1, y2);
 
-  glBindBuffer( GL_ARRAY_BUFFER, points_vbo );
-  glBufferData( GL_ARRAY_BUFFER, 18 * sizeof( GLfloat ), points, GL_STATIC_DRAW );
-  glBindBuffer( GL_ARRAY_BUFFER, colours_vbo );
-  glBufferData( GL_ARRAY_BUFFER, 18 * sizeof( GLfloat ), colours, GL_STATIC_DRAW );
-  glDrawArrays( GL_TRIANGLES, 0, 6 );
+ glBindBuffer( GL_ARRAY_BUFFER, points_vbo );
+ glBufferData( GL_ARRAY_BUFFER, 18 * sizeof( GLfloat ), points, GL_STATIC_DRAW );
+ glBindBuffer( GL_ARRAY_BUFFER, colours_vbo );
+ glBufferData( GL_ARRAY_BUFFER, 18 * sizeof( GLfloat ), colours, GL_STATIC_DRAW );
+ glDrawArrays( GL_TRIANGLES, 0, 6 );
 }
 
 

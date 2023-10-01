@@ -18,7 +18,7 @@ int CreateWindow(int width,int height)
   glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
   glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
 
-  window = glfwCreateWindow( width, height, "Chastity Checkerboard", NULL, NULL );
+  window = glfwCreateWindow( width, height, "OpenGL Core", NULL, NULL );
   if ( !window ) {
     fprintf( stderr, "ERROR: could not open window with GLFW3\n" );
     glfwTerminate();
