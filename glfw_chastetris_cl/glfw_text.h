@@ -50,7 +50,7 @@ void welcome_screen_chaste_font()
  lgbt_draw_text(text,text_x,height*12/16,scale);
  
  /*flush all gl commands and display to the screen*/
- glFlush();
+ glfwSwapBuffers( window );
 
  /*check for keypresses or other events*/
  glfwPollEvents();
