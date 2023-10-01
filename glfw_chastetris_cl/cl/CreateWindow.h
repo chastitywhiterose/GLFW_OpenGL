@@ -17,7 +17,7 @@ int CreateWindow(int width,int height)
   
  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,2); /*Using version 2.1 of OpenGL*/
  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,1);
- glfwWindowHint(GLFW_DOUBLEBUFFER,GLFW_FALSE); /*single buffered window*/
+ glfwWindowHint(GLFW_DOUBLEBUFFER,GLFW_TRUE); /*single buffered window*/
 
  window=glfwCreateWindow(width,height,"OpenGL Legacy",NULL,NULL);
 

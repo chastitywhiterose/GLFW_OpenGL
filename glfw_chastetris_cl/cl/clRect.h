@@ -13,6 +13,7 @@ It also means I can then port this function over to other graphics library to ma
 However, I am limited to 2D graphics because that is all I care about.
 */
 
+
 float clx(float f)
 {
  f=f*2/width-1; /*printf("X=%f\n",f);*/
@@ -41,6 +42,15 @@ void clRectf( float x1, float y1, float x2, float y2 )
  clVertex2f(x1, y2);
  glEnd();
 }
+
+
+
+void clColor3ub(unsigned char r,unsigned char g,unsigned char b)
+{
+ glColor3ub(r,g,b);
+}
+
+
 
 void clRectLinef( float x1, float y1, float x2, float y2 )
 {
