@@ -40,76 +40,6 @@ FILE *fp; /*to save a file of moves played*/
 char filename[256]; /*name of move log file*/
 FILE *fp_input; /*file to get input from instead of the keyboard*/
 
-/*modern opengl variables*/
-
-  /*
-   geometry to use. these are 3 xyz points (9 floats total) to make a triangle
-   we will draw two triangles to make a complete rectangle, so there are actually 18 floats for both
-   the vertex positions and the vertex colors
- */
-  GLfloat points[] =
-  {
-   -0.5f,  0.5f, 0.0f,
-    0.5f,  0.5f, 0.0f,
-   -0.5f, -0.5f, 0.0f,
-
-    0.5f, -0.5f, 0.0f,
-    0.5f,  0.5f, 0.0f,
-   -0.5f, -0.5f, 0.0f,
-  };
-
-  GLfloat colours[] =
-  {
-   1.0f, 0.0f, 0.0f,
-   0.0f, 1.0f, 0.0f,
-   0.0f, 0.0f, 1.0f,
-
-   0.0f, 1.0f, 1.0f,
-   1.0f, 0.0f, 1.0f,
-   1.0f, 1.0f, 0.0f 
-  };
-
-
-  GLuint points_vbo;
-  GLuint colours_vbo;
-
-  GLuint vao;
-
-
-  const GLubyte* renderer;
-  const GLubyte* version;
-
-
-
-  /* these are the strings of code for the shaders
-  the vertex shader positions each vertex point */
-  const char* vertex_shader =
-    "#version 410\n"
-"layout(location = 0) in vec3 vertex_position;"
-"layout(location = 1) in vec3 vertex_colour;"
-"out vec3 colour;"
-    "void main () {"
-	"colour = vertex_colour;"
-	"gl_Position = vec4(vertex_position, 1.0);"
-    "}";
-
-  /* the fragment shader colours each fragment (pixel-sized area of the
-  triangle) */
-  const char* fragment_shader =
-    "#version 410\n"
-"in vec3 colour;"
-"out vec4 frag_colour;"
-    "void main () {"
-	"frag_colour = vec4 (colour, 1.0);"
-    "}";
-
-  /* GL shader objects for vertex and fragment shader [components] */
-  GLuint vert_shader, frag_shader;
-  /* GL shader programme object [combined, to link] */
-  GLuint shader_programme;
-
-
-/*end of global modern opengl variables*/
 
 
 #include "./cl/CreateWindow.h"
@@ -134,7 +64,12 @@ int main(int argc, char **argv)
 
  strcpy(gamename,"Chaste Tris");
 
- CreateWindow(width,height);
+ x=CreateWindow(width,height);
+ if(x!=0)
+ {
+  printf("Error Creating Window. Program Closing\n");
+  return 1;
+ }
 
  main_lgbt=lgbt_load("./font/FreeBASIC Font 8.lgbt");
  
